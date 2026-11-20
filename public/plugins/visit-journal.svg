@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <title>Visit Journal</title>
+  <rect width="640" height="360" fill="#49404c"/>
+  <g transform="rotate(-5 320 150)">
+    <rect x="199" y="56" width="242" height="190" rx="9" fill="#c4a574"/>
+    <path d="M211 64q57-10 109 4 56-13 109-4v166q-54-9-109 4-52-12-109-4Z" fill="#faf6ef"/>
+    <path d="M320 70v156" stroke="#b6a58d" stroke-width="2"/>
+    <path d="M236 161h58m-58 16h44m44-65h58m-58 16h66m-66 16h48m-48 33h63m-63 16h39" fill="none" stroke="#b6a58d" stroke-width="5" stroke-linecap="round"/>
+    <g transform="translate(267 114)" fill="#176956"><path d="M0 26s-19-18-19-31a19 19 0 1 1 38 0C19 8 0 26 0 26Z"/><circle cy="-5" r="6" fill="#faf6ef"/></g>
+    <path d="M376 62h16v34l-8-6-8 6Z" fill="#ae5844"/>
+  </g>
+  <text x="320" y="310" text-anchor="middle" fill="#f2ebe0" font-family="sans-serif" font-size="30" font-weight="600" letter-spacing="4">VISIT JOURNAL</text>
+</svg>

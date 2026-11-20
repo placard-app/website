@@ -1,0 +1,21 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import catalog from '~/docs/catalog.json';
+---
+
+<Layout metadata={{ title: 'Documentation' }}
+  ><div class="panel" id="main">
+    <h1>Make yourself at home.</h1><p>Install, use and extend your own Placard instance.</p><ul class="doc-index">
+      {
+        catalog.map((d) => (
+          <li>
+            <>
+              <a href={'/docs/' + d.slug}>{d.title}</a>
+              <p>{d.summary}</p>
+            </>
+          </li>
+        ))
+      }
+    </ul>
+  </div></Layout
+>

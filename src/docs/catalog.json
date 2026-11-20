@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "product-overview",
+    "title": "Meet Placard",
+    "summary": "What belongs in your library, and how it works.",
+    "path": "docs/product-overview.md"
+  },
+  {
+    "slug": "user-guide",
+    "title": "Your first library",
+    "summary": "Capture, import, organize, and share places.",
+    "path": "docs/user-guide.md"
+  },
+  {
+    "slug": "install",
+    "title": "Install",
+    "summary": "Docker Compose, Coolify, Dokploy, and first setup.",
+    "path": "docs/install.md"
+  },
+  {
+    "slug": "google-apis",
+    "title": "Google APIs",
+    "summary": "BYOK key, Places API (New), Maps JavaScript, restrictions.",
+    "path": "docs/google-apis.md"
+  },
+  {
+    "slug": "changelog",
+    "title": "Changelog",
+    "summary": "Release history and changes in each version.",
+    "path": "CHANGELOG.md"
+  },
+  {
+    "slug": "backup-restore",
+    "title": "Backup and restore",
+    "summary": "Back up Compose or Coolify and rehearse recovery with real data.",
+    "path": "docs/backup-restore.md"
+  },
+  {
+    "slug": "upgrade",
+    "title": "Upgrade",
+    "summary": "Update an existing instance and recover if an upgrade fails.",
+    "path": "docs/upgrade.md"
+  },
+  {
+    "slug": "troubleshooting",
+    "title": "Troubleshooting",
+    "summary": "Find help for setup, imports, photos, and connections.",
+    "path": "docs/troubleshooting.md"
+  },
+  {
+    "slug": "release-1.0",
+    "title": "v1.0.0 release",
+    "summary": "The first stable release: included features and current limits.",
+    "path": "docs/release-1.0.md"
+  },
+  {
+    "slug": "deployment",
+    "title": "Deployment",
+    "summary": "Compose stack, env vars, Nextcloud adjacency, volumes.",
+    "path": "docs/deployment.md"
+  },
+  {
+    "slug": "mcp",
+    "title": "MCP",
+    "summary": "Connect Cursor/Claude with a PAT; core and module tools.",
+    "path": "docs/mcp.md"
+  },
+  {
+    "slug": "creating-modules",
+    "title": "Creating modules",
+    "summary": "Build a prebuilt zip and upload it to Marketplace.",
+    "path": "docs/creating-modules.md"
+  },
+  {
+    "slug": "module-brief-for-ai",
+    "title": "FOR AI \u2014 module brief",
+    "summary": "Copy-paste prompt so an agent can author a module.",
+    "path": "docs/module-brief-for-ai.md"
+  },
+  {
+    "slug": "architecture-modules",
+    "title": "How modules work",
+    "summary": "Core vs modules, bundled vs upload, safety rules.",
+    "path": "docs/architecture-modules.md"
+  },
+  {
+    "slug": "takeout-format",
+    "title": "Takeout format",
+    "summary": "What Placard expects from Google Takeout exports.",
+    "path": "docs/takeout-format.md"
+  }
+]

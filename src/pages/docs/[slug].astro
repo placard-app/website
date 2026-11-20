@@ -1,0 +1,50 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import catalog from '~/docs/catalog.json';
+const documents = import.meta.glob('../../docs/content/*.md');
+export function getStaticPaths() {
+  return catalog.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }));
+}
+const { doc } = Astro.props;
+const load = documents[`../../docs/content/${doc.slug}.md`];
+if (!load) throw new Error(`Missing document ${doc.slug}`);
+const module = (await load()) as { Content: import('astro').MarkdownInstance<Record<string, unknown>>['Content'] };
+const { Content } = module;
+---
+
+<Layout metadata={{ title: doc.title, description: doc.summary }}
+  ><div class="docs" id="main">
+    <nav aria-label="Documentation">
+      <a href="/docs">Documentation</a>{
+        catalog.map((d) => (
+          <a aria-current={d.slug === doc.slug ? 'page' : undefined} href={'/docs/' + d.slug}>
+            {d.title}
+          </a>
+        ))
+      }
+    </nav><article class="prose max-w-none"><Content /></article>
+  </div></Layout
+>
+<script>
+  for (const heading of document.querySelectorAll('article :is(h1,h2,h3,h4)[id]')) {
+    const a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = ' #';
+    a.setAttribute('aria-label', 'Link to ' + heading.textContent);
+    heading.append(a);
+  }
+  for (const pre of document.querySelectorAll('pre')) {
+    const button = document.createElement('button');
+    button.textContent = 'Copy';
+    button.type = 'button';
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pre.querySelector('code')?.textContent ?? '');
+        button.textContent = 'Copied';
+      } catch {
+        button.textContent = 'Select and copy the code';
+      }
+    });
+    pre.before(button);
+  }
+</script>
