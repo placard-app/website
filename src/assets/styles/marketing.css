@@ -196,6 +196,46 @@
   color: #6b6d68;
   line-height: 1.6;
 }
+.marketing .features-section {
+  padding-block: 6rem 7rem;
+  border-top: 1px solid #dededb;
+}
+.marketing .features-heading h2 {
+  margin-top: 1.4rem;
+}
+.marketing .features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 5rem;
+  margin-top: 4rem;
+}
+.marketing .feature-item {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-block: 2rem;
+  border-top: 1px solid #d4d5d1;
+}
+.marketing .feature-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #a44027;
+  stroke-width: 1.5;
+}
+.marketing .feature-item h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.marketing .feature-item p {
+  max-width: 29rem;
+  margin-top: 0.65rem;
+  color: #626460;
+  line-height: 1.65;
+}
+.marketing .feature-item .text-link {
+  margin-top: 1.2rem;
+}
 .modules-section {
   background: #f3f3f0;
   padding-block: 7rem;
@@ -364,6 +404,7 @@
     margin-top: 2.5rem !important;
   }
   .intro-section,
+  .marketing .features-section,
   .modules-section {
     padding-block: 4rem;
   }
@@ -396,6 +437,10 @@
   }
   .marketing h1 {
     font-size: clamp(3rem, 12vw, 4.4rem);
+  }
+  .marketing .features-grid {
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
   }
   .benefits {
     grid-template-columns: 1fr;

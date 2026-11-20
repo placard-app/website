@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
 import FAQs from '~/components/widgets/FAQs.astro';
 import { plugins } from '~/docs/plugins';
 import '~/assets/styles/marketing.css';
@@ -7,6 +8,61 @@ import '~/assets/styles/marketing.css';
 const featured = ['places.day-out', 'places.menus', 'places.pick'].flatMap((id) =>
   plugins.filter((plugin) => plugin.id === id)
 );
+
+const features = [
+  {
+    id: 'mcp',
+    title: 'Connect AI tools with MCP',
+    description:
+      'Use a personal token to let an MCP client search and add places, manage lists and status, and use tools from installed modules.',
+    icon: 'tabler:plug-connected',
+    href: '/docs/mcp',
+    linkLabel: 'Connect with MCP',
+  },
+  {
+    id: 'chrome',
+    title: 'Save from Google Maps',
+    description:
+      'Use the Chrome extension to send a place to Placard, then review its name and location before saving.',
+    icon: 'tabler:map-pin-plus',
+    href: '/docs/user-guide#save-a-place-from-chrome',
+    linkLabel: 'Set up the extension',
+  },
+  {
+    id: 'build',
+    title: 'Build a module with AI',
+    description:
+      'Give an agent the module brief and skeleton to build your own tool. Review the result before an admin installs it.',
+    icon: 'tabler:code',
+    href: '/docs/module-brief-for-ai',
+    linkLabel: 'Get the module brief',
+  },
+  {
+    id: 'mobile',
+    title: 'Take your library along',
+    description:
+      'Open Placard in your phone browser or add it to your home screen. An internet connection to your instance is required.',
+    icon: 'tabler:device-mobile',
+    href: '/docs/user-guide#use-placard-on-your-phone',
+    linkLabel: 'Use Placard on your phone',
+  },
+  {
+    id: 'sharing',
+    title: 'Share selected places',
+    description: 'When an admin enables household mode, choose which of your places to share with household members.',
+    icon: 'tabler:users',
+    href: '/docs/user-guide#share-with-your-household',
+    linkLabel: 'Learn about sharing',
+  },
+  {
+    id: 'export',
+    title: 'Take your data with you',
+    description: 'Export your library as JSON or GeoJSON, along with your media.',
+    icon: 'tabler:download',
+    href: '/docs/user-guide#export-extend-and-connect',
+    linkLabel: 'Explore export options',
+  },
+];
 ---
 
 <Layout metadata={{ title: 'Placard — Good places. Worth keeping.', ignoreTitleTemplate: true }}>
@@ -54,6 +110,29 @@ const featured = ['places.day-out', 'places.menus', 'places.pick'].flatMap((id) 
         </div>
         <div><h3>Find it again</h3><p>Search your library or discover saved places near you.</p></div>
         <div><h3>Make it yours</h3><p>Run Placard on your server, with your database and media.</p></div>
+      </div>
+    </section>
+
+    <section class="features-section wrap" id="features">
+      <div class="features-heading">
+        <p class="eyebrow">MADE TO FIT YOUR LIFE</p>
+        <h2>Your places, with<br />room to do more.</h2>
+      </div>
+      <div class="features-grid">
+        {
+          features.map((feature) => (
+            <article class="feature-item" id={feature.id}>
+              <Icon name={feature.icon} class="feature-icon" aria-hidden="true" />
+              <div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+                <a class="text-link" href={feature.href}>
+                  {feature.linkLabel}
+                </a>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </section>
 
