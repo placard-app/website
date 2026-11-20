@@ -3,7 +3,7 @@ export const headerData = {
     { text: 'Modules', href: '/plugins' },
     { text: 'Documentation', href: '/docs' },
   ],
-  actions: [{ text: 'Install Placard', href: '/docs/install', variant: 'primary' as const }],
+  actions: [{ text: 'Install Placard', href: '/docs/install' }],
 };
 export const footerData = {
   links: [],

@@ -1,14 +1,16 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import catalog from '~/docs/catalog.json';
-const documents = import.meta.glob('../../docs/content/*.md');
+const documents = import.meta.glob<import('astro').MarkdownInstance<Record<string, unknown>>>(
+  '../../docs/content/*.md'
+);
 export function getStaticPaths() {
   return catalog.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }));
 }
 const { doc } = Astro.props;
 const load = documents[`../../docs/content/${doc.slug}.md`];
 if (!load) throw new Error(`Missing document ${doc.slug}`);
-const module = (await load()) as { Content: import('astro').MarkdownInstance<Record<string, unknown>>['Content'] };
+const module = await load();
 const { Content } = module;
 ---
 
