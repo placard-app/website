@@ -1,56 +1,118 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import { plugins } from '~/docs/plugins';
+import '~/assets/styles/marketing.css';
+
+const featured = ['places.day-out', 'places.menus', 'places.pick'].flatMap((id) =>
+  plugins.filter((plugin) => plugin.id === id)
+);
 ---
 
-<Layout
-  ><div id="main">
-    <Hero
-      tagline="Your places. On your cards. On your server."
-      title="Good places. Worth keeping."
-      subtitle="A self-hosted library for the places you care about. Bring your saved places together, keep the details that matter, and rediscover somewhere worth going."
-      actions={[
-        { text: 'Install Placard', href: '/docs/install', variant: 'primary' },
-        { text: 'View on GitHub', href: 'https://github.com/placard-app/core' },
-      ]}
-      image={{ src: '/library-hero.webp', alt: 'Placard library showing saved places as cards' }}
-    />
-    <Features
-      title="A home for your saved places"
-      items={[
-        {
-          title: 'Bring your library together',
-          description: 'Import Google Takeout saves and organize places with lists, tags, notes and photos.',
-          icon: 'tabler:map-pin',
-        },
-        {
-          title: 'Remember and rediscover',
-          description: 'Search your own collection and find places near you when you need them.',
-          icon: 'tabler:search',
-        },
-        {
-          title: 'Keep ownership',
-          description: 'Run Placard with Docker Compose. Your database and media live on your server.',
-          icon: 'tabler:home',
-        },
-      ]}
-    />
-    <section class="panel">
-      <h2>A few extra possibilities.</h2><p>
-        Plan a Day Out, keep Menus with restaurants, record visits, or let Pick choose tonight. Add optional modules
-        when you need them.
-      </p><a class="btn" href="/plugins">Explore modules</a>
+<Layout metadata={{ title: 'Placard — Good places. Worth keeping.', ignoreTitleTemplate: true }}>
+  <div id="main" class="marketing">
+    <section class="hero-section wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">A place for your places</p>
+        <h1>Good places.<br /><em>Worth keeping.</em></h1>
+        <p class="hero-description">
+          A self-hosted library for the places you care about. Bring your saved places together and keep the details
+          that make them yours.
+        </p>
+        <div class="actions">
+          <a class="action action-primary" href="/docs/install">Install Placard </a>
+          <a class="text-link" href="https://github.com/placard-app/core">View on GitHub </a>
+        </div>
+        <p class="hero-note">OPEN SOURCE <span> / </span> SELF-HOSTED <span> / </span> YOUR DATA</p>
+      </div>
+      <div class="hero-visual">
+        <div class="stage-label"><span>YOUR LIBRARY</span><span>PLACARD</span></div>
+        <div class="screenshot-frame">
+          <img
+            src="/library-hero.webp"
+            alt="Placard library showing saved places as cards"
+            width="1440"
+            height="756"
+            fetchpriority="high"
+          />
+        </div>
+        <p class="stage-caption"><span>THE PLACES YOU WANT TO REMEMBER.</span><span>ALL IN ONE PLACE</span></p>
+      </div>
     </section>
-    <section class="panel">
-      <h2>Make room on your server.</h2><p>
-        Install Docker, run the installer, and create your administrator account. The installation guide covers
-        configuration, HTTPS, upgrades and backups.
-      </p><a class="btn-primary" href="/docs/install">Install Placard</a>
+
+    <section class="intro-section wrap">
+      <div><p class="eyebrow">YOUR LIBRARY</p><h2>Keep the places.<br />Keep the details.</h2></div>
+      <div class="intro-copy">
+        <p>
+          Placard gives your saved places a home on your own server. Import your Google Takeout saves, add your own
+          notes and photos, and find the right place when you need it.
+        </p><a class="text-link" href="/docs/product-overview">Get to know Placard </a>
+      </div>
+      <div class="benefits">
+        <div>
+          <h3>Bring it together</h3><p>Organize your collection with lists, tags, notes and photos.</p>
+        </div>
+        <div><h3>Find it again</h3><p>Search your library or discover saved places near you.</p></div>
+        <div><h3>Make it yours</h3><p>Run Placard on your server, with your database and media.</p></div>
+      </div>
+    </section>
+
+    <section class="modules-section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">OPTIONAL MODULES</p><h2>More ways to use<br />your places.</h2></div><div>
+            <p>Make plans, save menus, or let your library choose. Add the tools you need.</p><a
+              class="text-link"
+              href="/plugins"
+              >Explore all modules
+            </a>
+          </div>
+        </div>
+        <div class="featured-grid">
+          {
+            featured.map((plugin) => (
+              <a class="featured-card" href={'/plugins#' + plugin.id}>
+                <>
+                  <div class="featured-image">
+                    <img
+                      src={'/plugins/' + plugin.screenshot}
+                      alt={plugin.name + ' in Placard'}
+                      width={plugin.screenshotWidth}
+                      height={plugin.screenshotHeight}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="featured-info">
+                    <>
+                      <div>
+                        <>
+                          <span>MODULE</span>
+                          <h3>{plugin.name}</h3>
+                          <p>{plugin.tagline}</p>
+                        </>
+                      </div>
+                    </>
+                  </div>
+                </>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="install-section wrap">
+      <div class="install-panel">
+        <div><p class="eyebrow">GET STARTED</p><h2>Make room on<br />your server.</h2></div><div>
+          <p>
+            Install Docker, run the installer, and create your administrator account. The guide covers configuration,
+            HTTPS, upgrades and backups.
+          </p><a class="action action-light" href="/docs/install">Install Placard </a>
+        </div>
+      </div>
     </section>
     <FAQs
-      title="Before you make room"
+      title="A few things to know"
       items={[
         {
           title: 'Where does my data live?',
@@ -72,5 +134,5 @@ import FAQs from '~/components/widgets/FAQs.astro';
         },
       ]}
     />
-  </div></Layout
->
+  </div>
+</Layout>
