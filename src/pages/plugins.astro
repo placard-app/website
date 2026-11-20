@@ -1,42 +1,58 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { plugins } from '~/docs/plugins';
+import '~/assets/styles/marketing.css';
 ---
 
-<Layout metadata={{ title: 'Modules', description: 'Optional tools for your Placard place library.' }}
-  ><div id="main" class="panel">
-    <h1>Your library. A few extra possibilities.</h1><p>
-      Optional modules for planning outings, remembering visits and choosing where to go together.
-    </p><div class="module-grid">
+<Layout metadata={{ title: 'Modules', description: 'Optional tools for your Placard place library.' }}>
+  <div id="main" class="marketing">
+    <section class="catalog-header wrap">
+      <p class="eyebrow">THE PLACARD TOOLKIT / MODULES</p><div>
+        <h1>Your places.<br /><em>More possibilities.</em></h1><p>
+          Optional modules for planning outings, remembering visits and choosing where to go together.
+        </p>
+      </div>
+    </section>
+    <section class="catalog wrap" aria-label="Placard modules">
       {
-        plugins.map((p) => (
-          <article>
-            <>
-              <img src={'/plugins/' + p.image} alt={p.alt} width="640" height="360" loading="lazy" />
-              <h2>{p.name}</h2>
-              <p>
-                <strong>{p.tagline}</strong>
-              </p>
-              <p>{p.description}</p>
+        plugins.map((plugin, index) => (
+          <article class="catalog-card" id={plugin.id}>
+            <div class="catalog-image">
+              <img
+                src={'/plugins/' + plugin.screenshot}
+                alt={plugin.name + ' in Placard'}
+                width={plugin.screenshotWidth}
+                height={plugin.screenshotHeight}
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+            </div>
+            <div class="catalog-content">
+              <p class="eyebrow">MODULE</p>
+              <h2>{plugin.name}</h2>
+              <p class="catalog-tagline">{plugin.tagline}</p>
+              <p>{plugin.description}</p>
               <ul>
-                {p.features.map((f) => (
-                  <li>{f}</li>
+                {plugin.features.map((feature) => (
+                  <li>{feature}</li>
                 ))}
               </ul>
-              <details>
-                <>
-                  <summary>See {p.name} in Placard</summary>
-                  <img src={'/plugins/' + p.screenshot} alt={p.name + ' screenshot'} loading="lazy" />
-                </>
-              </details>
-              <a href={'https://github.com/placard-app/module-' + p.id.slice(7)}>Guide and source on GitHub</a>
-            </>
+              <a class="text-link" href={'https://github.com/placard-app/module-' + plugin.id.slice(7)}>
+                Guide and source on GitHub
+              </a>
+            </div>
           </article>
         ))
       }
-    </div><h2>Add a module</h2><p>
-      Open Marketplace in your instance. Ask an administrator to activate a listed module or install it using its GitHub
-      repository URL. Install code you trust and back up your data before updating.
-    </p><a href="/docs/install">Install Placard first</a>
-  </div></Layout
->
+    </section>
+    <section class="install-section wrap">
+      <div class="install-panel">
+        <div><p class="eyebrow">MAKE IT YOURS</p><h2>Add a module.</h2></div><div>
+          <p>
+            Open Marketplace in your instance. Ask an administrator to activate a listed module or install it using its
+            GitHub repository URL. Install code you trust and back up your data before updating.
+          </p><a class="action action-light" href="/docs/install">Install Placard first </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,454 @@
+.marketing {
+  color: #20211f;
+  background: #fff;
+}
+.marketing .wrap {
+  width: min(100% - 3rem, 84rem);
+  margin-inline: auto;
+}
+.marketing h1,
+.marketing h2,
+.marketing h3,
+.marketing p {
+  margin: 0;
+}
+.marketing h1,
+.marketing h2 {
+  color: #1c1d1b;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+.marketing h1 {
+  font-size: clamp(3.5rem, 5.2vw, 6rem);
+}
+.marketing h2 {
+  font-size: clamp(2.6rem, 4.6vw, 5rem);
+}
+.marketing h1 em {
+  color: #a44027;
+  font-style: normal;
+}
+.marketing .eyebrow {
+  color: #a44027;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+}
+.marketing .text-link {
+  display: inline-flex;
+  gap: 1.2rem;
+  align-items: center;
+  border-bottom: 1px solid #a44027;
+  padding: 0 0 0.45rem;
+  color: #292a28;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.marketing .text-link:hover {
+  color: #a44027;
+}
+.marketing .action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 1rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.marketing .action-primary {
+  color: #fff;
+  background: #a44027;
+}
+.marketing .action-primary:hover {
+  background: #71311f;
+}
+.marketing .action-light {
+  color: #1d1e1c;
+  background: #fff;
+}
+.marketing .action-light:hover {
+  background: #f2e4df;
+}
+.hero-section {
+  display: grid;
+  grid-template-columns: 0.87fr 1.13fr;
+  align-items: center;
+  gap: 4%;
+  padding-block: 6rem 7rem;
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+.hero-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.8rem;
+}
+.hero-description {
+  max-width: 31rem;
+  margin-top: 1.8rem !important;
+  color: #626460;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+.hero-note {
+  margin-top: 4.5rem !important;
+  color: #626460;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.hero-note span {
+  color: #c5c6c2;
+  padding-inline: 0.5rem;
+}
+.hero-visual {
+  min-width: 0;
+  background: #e9e8e4;
+  padding: 1rem 0 0 1rem;
+}
+.stage-label,
+.stage-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.3rem 1rem 1rem 0;
+  color: #5b5d58;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+.screenshot-frame {
+  overflow: hidden;
+  border: 1px solid #d6d6d2;
+  box-shadow: 0 18px 45px #2828241c;
+}
+.screenshot-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.stage-caption {
+  padding: 1rem 1rem 1rem 0;
+}
+.intro-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10%;
+  padding-block: 6rem 7rem;
+  border-top: 1px solid #dededb;
+}
+.intro-section h2,
+.section-heading h2 {
+  margin-top: 1.4rem;
+}
+.intro-copy {
+  max-width: 35rem;
+  align-self: end;
+}
+.intro-copy p,
+.section-heading > div:last-child p {
+  color: #626460;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.benefits {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 5rem;
+}
+.benefits > div {
+  border-top: 1px solid #c9cac6;
+  padding-top: 1.2rem;
+}
+.benefits span,
+.featured-info span {
+  color: #a44027;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+.benefits h3 {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.benefits p {
+  max-width: 20rem;
+  margin-top: 0.65rem;
+  color: #6b6d68;
+  line-height: 1.6;
+}
+.marketing .features-section {
+  padding-block: 6rem 7rem;
+  border-top: 1px solid #dededb;
+}
+.marketing .features-heading h2 {
+  margin-top: 1.4rem;
+}
+.marketing .features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 5rem;
+  margin-top: 4rem;
+}
+.marketing .feature-item {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-block: 2rem;
+  border-top: 1px solid #d4d5d1;
+}
+.marketing .feature-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #a44027;
+  stroke-width: 1.5;
+}
+.marketing .feature-item h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.marketing .feature-item p {
+  max-width: 29rem;
+  margin-top: 0.65rem;
+  color: #626460;
+  line-height: 1.65;
+}
+.marketing .feature-item .text-link {
+  margin-top: 1.2rem;
+}
+.modules-section {
+  background: #f3f3f0;
+  padding-block: 7rem;
+}
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.featured-card {
+  min-width: 0;
+  color: inherit;
+  background: white;
+  text-decoration: none;
+}
+.featured-image {
+  aspect-ratio: 1.45;
+  overflow: hidden;
+  background: #e4e5e1;
+}
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.25s;
+}
+.featured-card:hover img {
+  transform: scale(1.025);
+}
+.featured-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+.featured-info h3 {
+  margin-top: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+.featured-info p {
+  margin-top: 0.4rem;
+  color: #626460;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.install-section {
+  padding-block: 6rem;
+}
+.install-panel {
+  display: grid;
+  grid-template-columns: 1fr 0.65fr;
+  gap: 3rem;
+  padding: clamp(2rem, 5vw, 5rem);
+  color: #fff;
+  background: #252724;
+}
+.install-panel .eyebrow {
+  color: #e69a82;
+  margin-bottom: 1.4rem;
+}
+.install-panel h2 {
+  color: #fff;
+}
+.install-panel > div:last-child {
+  align-self: end;
+}
+.install-panel > div:last-child p {
+  color: #c9cbc5;
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+}
+.catalog-header {
+  padding-block: 6rem 5rem;
+}
+.catalog-header > div {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+  gap: 3rem;
+  align-items: end;
+  margin-top: 1.7rem;
+}
+.catalog-header > div > p {
+  max-width: 23rem;
+  color: #686a65;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.catalog {
+  border-top: 1px solid #d4d5d1;
+}
+.catalog-card {
+  scroll-margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 7%;
+  padding-block: 4rem;
+  border-bottom: 1px solid #d4d5d1;
+}
+.catalog-image {
+  align-self: start;
+  background: #efefec;
+  padding: 1.2rem;
+}
+.catalog-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 12px 30px #2425201a;
+}
+.catalog-content {
+  align-self: center;
+}
+.catalog-content h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+}
+.catalog-content .catalog-tagline {
+  margin-top: 1rem;
+  color: #292b28;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.catalog-content > p:not(.eyebrow):not(.catalog-tagline) {
+  margin-top: 0.75rem;
+  color: #6b6d68;
+  line-height: 1.65;
+}
+.catalog-content ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+.catalog-content li {
+  border: 1px solid #dedfdb;
+  padding: 0.4rem 0.65rem;
+  color: #5b5d58;
+  font-size: 0.75rem;
+}
+@media (max-width: 800px) {
+  .hero-section,
+  .intro-section,
+  .section-heading,
+  .install-panel,
+  .catalog-header > div,
+  .catalog-card {
+    grid-template-columns: 1fr;
+  }
+  .hero-section {
+    gap: 3rem;
+    padding-block: 4rem;
+  }
+  .hero-note {
+    margin-top: 2.5rem !important;
+  }
+  .intro-section,
+  .marketing .features-section,
+  .modules-section {
+    padding-block: 4rem;
+  }
+  .intro-copy {
+    margin-top: 2rem;
+  }
+  .benefits {
+    margin-top: 3rem;
+  }
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-image {
+    aspect-ratio: 1.8;
+  }
+  .install-section {
+    padding-block: 4rem;
+  }
+  .catalog-header {
+    padding-block: 4rem;
+  }
+  .catalog-card {
+    gap: 2rem;
+    padding-block: 3rem;
+  }
+}
+@media (max-width: 540px) {
+  .marketing .wrap {
+    width: min(100% - 2rem, 84rem);
+  }
+  .marketing h1 {
+    font-size: clamp(3rem, 12vw, 4.4rem);
+  }
+  .marketing .features-grid {
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+  }
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+  .benefits h3 {
+    margin-top: 0.8rem;
+  }
+  .stage-caption {
+    font-size: 0.75rem;
+  }
+}

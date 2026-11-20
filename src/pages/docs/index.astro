@@ -1,21 +1,274 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from '~/layouts/PageLayout.astro';
 import catalog from '~/docs/catalog.json';
+
+const guides = new Map(catalog.map((guide) => [guide.slug, guide]));
+const featured = [
+  { slug: 'install', label: 'Start here', icon: 'tabler:server' },
+  { slug: 'user-guide', label: 'Then make it yours', icon: 'tabler:book' },
+];
+const groups = [
+  {
+    title: 'Get started',
+    description: 'Get to know Placard and bring your places along.',
+    slugs: ['product-overview', 'takeout-format'],
+  },
+  {
+    title: 'Run your instance',
+    description: 'Configure, maintain, and get help with your installation.',
+    slugs: ['deployment', 'google-apis', 'backup-restore', 'upgrade', 'troubleshooting'],
+  },
+  {
+    title: 'Extend Placard',
+    description: 'Connect your tools and build modules for your library.',
+    slugs: ['mcp', 'architecture-modules', 'creating-modules', 'module-brief-for-ai'],
+  },
+  {
+    title: 'Releases',
+    description: 'See what has changed in Placard.',
+    slugs: ['release-1.0', 'changelog'],
+  },
+];
 ---
 
-<Layout metadata={{ title: 'Documentation' }}
-  ><div class="panel" id="main">
-    <h1>Make yourself at home.</h1><p>Install, use and extend your own Placard instance.</p><ul class="doc-index">
+<Layout metadata={{ title: 'Documentation', description: 'Guides to installing, using, and extending Placard.' }}>
+  <div class="docs-home" id="main">
+    <header class="docs-intro">
+      <p class="eyebrow">Placard documentation</p>
+      <h1>Documentation</h1>
+      <p>Everything you need to set up Placard, build your library, and make it your own.</p>
+    </header>
+
+    <section class="featured" aria-label="Start with Placard">
       {
-        catalog.map((d) => (
-          <li>
-            <>
-              <a href={'/docs/' + d.slug}>{d.title}</a>
-              <p>{d.summary}</p>
-            </>
-          </li>
+        featured.map(({ slug, label, icon }) => {
+          const guide = guides.get(slug);
+          if (!guide) throw new Error(`Unknown documentation slug: ${slug}`);
+          return (
+            <a class:list={['featured-card', { primary: slug === 'install' }]} href={`/docs/${guide.slug}`}>
+              <span class="featured-top">
+                <span class="featured-label">{label}</span>
+                <Icon name={icon} aria-hidden="true" />
+              </span>
+              <span class="featured-title">{guide.title}</span>
+              <span class="featured-summary">{guide.summary}</span>
+              <span class="featured-action">Read the guide</span>
+            </a>
+          );
+        })
+      }
+    </section>
+
+    <div class="directory-heading">
+      <p class="eyebrow">Explore the docs</p>
+      <h2>Find your guide</h2>
+    </div>
+    <div class="guide-groups">
+      {
+        groups.map((group) => (
+          <section class="guide-group" aria-labelledby={group.title.toLowerCase().replaceAll(' ', '-')}>
+            <div class="group-intro">
+              <h3 id={group.title.toLowerCase().replaceAll(' ', '-')}>{group.title}</h3>
+              <p>{group.description}</p>
+            </div>
+            <ul>
+              {group.slugs.map((slug) => {
+                const guide = guides.get(slug);
+                if (!guide) throw new Error(`Unknown documentation slug: ${slug}`);
+                return (
+                  <li>
+                    <a href={`/docs/${guide.slug}`}>
+                      <span class="guide-title">{guide.title}</span>
+                      <span class="guide-summary">{guide.summary}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
         ))
       }
-    </ul>
-  </div></Layout
->
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .docs-home {
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 7rem;
+  }
+  .docs-intro {
+    max-width: 44rem;
+    margin-bottom: 2.75rem;
+  }
+  .eyebrow {
+    color: var(--aw-color-primary);
+    font-size: 0.8rem;
+    font-weight: 750;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  h1,
+  h2,
+  h3 {
+    color: var(--aw-color-text-heading);
+    letter-spacing: -0.035em;
+  }
+  h1 {
+    margin: 0.65rem 0 1rem;
+    font-size: clamp(2.75rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 750;
+  }
+  .docs-intro > p:last-child {
+    color: var(--aw-color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+  .featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1rem;
+  }
+  .featured-card {
+    display: flex;
+    min-height: 16rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem;
+    border: 1px solid color-mix(in srgb, var(--aw-color-text-default) 16%, transparent);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--aw-color-text-default) 3%, var(--aw-color-bg-page));
+    transition:
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+  .featured-card.primary {
+    border-color: var(--aw-color-primary);
+    background: var(--aw-color-primary);
+    color: white;
+  }
+  .featured-card:hover {
+    border-color: var(--aw-color-primary);
+    transform: translateY(-2px);
+  }
+  .featured-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .featured-top :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.8;
+  }
+  .featured-label {
+    font-size: 0.8rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .featured-title {
+    margin-top: 2.25rem;
+    font-size: 1.75rem;
+    font-weight: 750;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+  .featured-summary {
+    margin-top: 0.5rem;
+    line-height: 1.55;
+    opacity: 0.8;
+  }
+  .featured-action {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .directory-heading {
+    margin: 5rem 0 2rem;
+  }
+  h2 {
+    margin-top: 0.5rem;
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: 750;
+    line-height: 1.15;
+  }
+  .guide-groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.5rem 4rem;
+  }
+  .guide-group {
+    border-top: 1px solid color-mix(in srgb, var(--aw-color-text-default) 22%, transparent);
+    padding-top: 1.5rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 750;
+    line-height: 1.25;
+  }
+  .group-intro p {
+    margin-top: 0.5rem;
+    color: var(--aw-color-text-muted);
+    line-height: 1.55;
+  }
+  .guide-group ul {
+    margin-top: 1.25rem;
+    list-style: none;
+  }
+  .guide-group li + li {
+    border-top: 1px solid color-mix(in srgb, var(--aw-color-text-default) 12%, transparent);
+  }
+  .guide-group a {
+    display: block;
+    padding: 1rem 0;
+  }
+  .guide-title,
+  .guide-summary {
+    display: block;
+  }
+  .guide-title {
+    color: var(--aw-color-text-heading);
+    font-weight: 700;
+  }
+  .guide-group a:hover .guide-title {
+    color: var(--aw-color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .guide-summary {
+    margin-top: 0.25rem;
+    color: var(--aw-color-text-muted);
+    line-height: 1.5;
+  }
+  @media (max-width: 700px) {
+    .docs-home {
+      padding-top: 3.5rem;
+    }
+    .featured,
+    .guide-groups {
+      grid-template-columns: 1fr;
+    }
+    .featured-card {
+      min-height: 14rem;
+    }
+    .directory-heading {
+      margin-top: 4rem;
+    }
+    .guide-groups {
+      gap: 2.5rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .featured-card {
+      transition: none;
+    }
+  }
+</style>
